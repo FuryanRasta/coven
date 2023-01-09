@@ -11,7 +11,7 @@ Query node status
 ## Query node status
 
 ```bash
-petri status
+coven status
 ```
 
 Example Output:

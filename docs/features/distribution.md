@@ -31,7 +31,7 @@ By default, the reward will be paid to the wallet address which send the delegat
 The delegator could set a new wallet as reward paid address. To set another wallet(marked as `B`) as the paid address, delegator need to send another transaction from wallet `A`.
 
 ```bash
-petri tx distribution set-withdraw-addr [withdraw-addr] [flags]
+coven tx distribution set-withdraw-addr [withdraw-addr] [flags]
 ```  
 
 ### Withdraw rewards
@@ -41,13 +41,13 @@ There are 2 ways to withdraw rewards according to different scenarios
 - `withdraw-all-rewards` : Withdraw all delegations rewards for a delegator
 
 ```bash
-petri tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=0.3petri --chain-id=petrihub
+coven tx distribution withdraw-all-rewards [flags] --from=<key-name> --fees=0.3coven --chain-id=coven
 ```
 
 - `withdraw-rewards` : Withdraw rewards from a given validator address
 
 ```bash
-petri tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=0.3petri --chain-id=petrihub
+coven tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name> --fees=0.3coven --chain-id=coven
 ```
 
 ### Query reward token
@@ -55,7 +55,7 @@ petri tx distribution withdraw-rewards [validator-addr] [flags] --from=<key-name
 Query all rewards earned by a delegator, optionally restrict to rewards from a single validator.
 
 ```bash
-petri query distribution rewards [delegator-addr] [validator-addr] [flags]
+coven query distribution rewards [delegator-addr] [validator-addr] [flags]
 ```
 
 For other distribution commands, please refer to [distribution cli client](../cli-client/distribution.md)

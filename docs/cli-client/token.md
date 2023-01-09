@@ -1,35 +1,35 @@
 # Token
 
-Token module allows you to manage assets on PETRI Hub
+Token module allows you to manage assets on COVEN Hub
 
 ## Available Commands
 
 | Name                                       | Description                                |
 | ------------------------------------------ | ------------------------------------------ |
-| [issue](#petri-tx-token-issue)              | Issue a new token                          |
-| [edit](#petri-tx-token-edit)                | Edit an existing token                     |
-| [transfer](#petri-tx-token-transfer)        | Transfer the ownership of a token          |
-| [mint](#petri-tx-token-mint)                | Mint tokens to a specified address         |
-| [burn](#petri-tx-token-burn)                | Burn some tokens                           |
-| [token](#petri-query-token-token)           | Query a token by symbol                    |
-| [tokens](#petri-query-token-tokens)         | Query tokens by owner                      |
-| [fee](#petri-query-token-fee)               | Query the token related fees               |
-| [params](#petri-query-token-params)         | Query the token related params             |
-| [total-burn](#petri-query-token-total-burn) | Query the total amount of all burn tokens. |
+| [issue](#coven-tx-token-issue)              | Issue a new token                          |
+| [edit](#coven-tx-token-edit)                | Edit an existing token                     |
+| [transfer](#coven-tx-token-transfer)        | Transfer the ownership of a token          |
+| [mint](#coven-tx-token-mint)                | Mint tokens to a specified address         |
+| [burn](#coven-tx-token-burn)                | Burn some tokens                           |
+| [token](#coven-query-token-token)           | Query a token by symbol                    |
+| [tokens](#coven-query-token-tokens)         | Query tokens by owner                      |
+| [fee](#coven-query-token-fee)               | Query the token related fees               |
+| [params](#coven-query-token-params)         | Query the token related params             |
+| [total-burn](#coven-query-token-total-burn) | Query the total amount of all burn tokens. |
 
-## petri tx token issue
+## coven tx token issue
 
 Issue a new token
 
 ```bash
-petri tx token issue [flags]
+coven tx token issue [flags]
 ```
 
 **Flags:**
 
 | Name, shorthand  | Type    | Required | Default       | Description                                                                                                                    |
 | ---------------- | ------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| --name           | string  | Yes      |               | Name of the newly issued token, limited to 32 unicode characters, e.g. "PETRI Network"                                          |
+| --name           | string  | Yes      |               | Name of the newly issued token, limited to 32 unicode characters, e.g. "COVEN Network"                                          |
 | --symbol         | string  | Yes      |               | The symbol of the token, length between 3 and 8, alphanumeric characters beginning with alpha, case insensitive                |
 | --initial-supply | uint64  | Yes      |               | The initial supply of this token. The amount before boosting should not exceed 100 billion.                                    |
 | --max-supply     | uint64  |          | 1000000000000 | The hard cap of this token, total supply can not exceed max supply. The amount before boosting should not exceed 1000 billion. |
@@ -40,7 +40,7 @@ petri tx token issue [flags]
 ### Issue a token
 
 ```bash
-petri tx token issue \
+coven tx token issue \
     --name="Kitty Token" \
     --symbol="kitty" \
     --min-unit="kitty" \
@@ -55,27 +55,27 @@ petri tx token issue \
 
 ### Send tokens
 
-You can send any tokens you have just like [sending petri](./bank.md#petri-tx-bank-send)
+You can send any tokens you have just like [sending coven](./bank.md#coven-tx-bank-send)
 
 #### Send tokens
 
 ```bash
-petri tx bank send [from_key_or_address] [to_address] [amount] [flags]
+coven tx bank send [from_key_or_address] [to_address] [amount] [flags]
 ```
 
-## petri tx token edit
+## coven tx token edit
 
 Edit an existing token
 
 ```bash
-petri tx token edit [symbol] [flags]
+coven tx token edit [symbol] [flags]
 ```
 
 **Flags:**
 
 | Name         | Type   | Required | Default | Description                                       |
 | ------------ | ------ | -------- | ------- | ------------------------------------------------- |
-| --name       | string |          |         | The token name, e.g. PETRI Network                 |
+| --name       | string |          |         | The token name, e.g. COVEN Network                 |
 | --max-supply | uint64 |          | 0       | The max supply of the token                       |
 | --mintable   | bool   |          | false   | Whether the token can be minted, default to false |
 
@@ -84,15 +84,15 @@ petri tx token edit [symbol] [flags]
 ### Edit Token
 
 ```bash
-petri tx token edit <symbol> --name="Cat Token" --max-supply=100000000000 --mintable=true --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+coven tx token edit <symbol> --name="Cat Token" --max-supply=100000000000 --mintable=true --from=<key-name> --chain-id=<chain-id> --fees=<fee>
 ```
 
-## petri tx token transfer
+## coven tx token transfer
 
 Transfer the ownership of a token
 
 ```bash
-petri tx token transfer [symbol] [flags]
+coven tx token transfer [symbol] [flags]
 ```
 
 **Flags:**
@@ -104,15 +104,15 @@ petri tx token transfer [symbol] [flags]
 ### Transfer Token Owner
 
 ```bash
-petri tx token transfer <symbol> --to=<to> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+coven tx token transfer <symbol> --to=<to> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
 ```
 
-## petri tx token mint
+## coven tx token mint
 
 Mint tokens to a specified address
 
 ```bash
-petri tx token mint [symbol] [flags]
+coven tx token mint [symbol] [flags]
 ```
 
 **Flags:**
@@ -125,15 +125,15 @@ petri tx token mint [symbol] [flags]
 ### Mint Token
 
 ```bash
-petri tx token mint <symbol> --amount=<amount> --to=<to> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+coven tx token mint <symbol> --amount=<amount> --to=<to> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
 ```
 
-## petri tx token burn
+## coven tx token burn
 
 Burn some tokens
 
 ```bash
-petri tx token burn [symbol] [flags]
+coven tx token burn [symbol] [flags]
 ```
 
 **Flags:**
@@ -145,81 +145,81 @@ petri tx token burn [symbol] [flags]
 ### Burn Token
 
 ```bash
-petri tx token burn <symbol> --amount=<amount> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
+coven tx token burn <symbol> --amount=<amount> --from=<key-name> --chain-id=<chain-id> --fees=<fee>
 ```
 
-## petri query token token
+## coven query token token
 
 Query a token by symbol
 
 ```bash
-petri query token token [denom] [flags]
+coven query token token [denom] [flags]
 ```
 
 ### Query a token
 
 ```bash
-petri query token token <denom>
+coven query token token <denom>
 ```
 
-## petri query token tokens
+## coven query token tokens
 
 Query tokens by the owner which is optional
 
 ```bash
-petri query token tokens [owner] [flags]
+coven query token tokens [owner] [flags]
 ```
 
 ### Query all tokens
 
 ```bash
-petri query token tokens
+coven query token tokens
 ```
 
 ### Query tokens with the specified owner
 
 ```bash
-petri query token tokens <owner>
+coven query token tokens <owner>
 ```
 
-## petri query token fee
+## coven query token fee
 
 Query the token related fees, including token issuance and minting
 
 ```bash
-petri query token fee [symbol] [flags]
+coven query token fee [symbol] [flags]
 ```
 
 ### Query fees of issuing and minting a token
 
 ```bash
-petri query token fee kitty
+coven query token fee kitty
 ```
 
-## petri query token params
+## coven query token params
 
 Query token module params
 
 ```bash
-petri query token params [flags]
+coven query token params [flags]
 ```
 
 ### Query token module params
 
 ```bash
-petri query token params
+coven query token params
 ```
 
-## petri query token total-burn
+## coven query token total-burn
 
 Query the total amount of all burn tokens
 
 ```bash
-petri query token total-burn [flags]
+coven query token total-burn [flags]
 ```
 
 ### Query the total amount of all burn tokens
 
 ```bash
-petri query token total-burn
+coven query token total-burn
 ```

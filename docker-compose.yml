@@ -1,50 +1,50 @@
 version: '3'
 
 services:
-  petrinode0:
-    container_name: petrinode0
-    image: petrinetwork/petrihub:latest
+  covennode0:
+    container_name: covennode0
+    image: mage-war/coven:latest
     ports:
     - "26656-26657:26656-26657"
     volumes:
     - ./build:/home
-    command: /bin/sh -c 'cd /home/nodecluster/node0 && petri start --home petri'
+    command: /bin/sh -c 'cd /home/nodecluster/node0 && coven start --home coven'
     networks:
       localnet:
         ipv4_address: 192.168.10.2
 
-  petrinode1:
-    container_name: petrinode1
-    image: petrinetwork/petrihub:latest
+  covennode1:
+    container_name: covennode1
+    image: mage-war/coven:latest
     ports:
     - "26659-26660:26656-26657"
     volumes:
     - ./build:/home
-    command: /bin/sh -c 'cd /home/nodecluster/node1 && petri start --home petri'
+    command: /bin/sh -c 'cd /home/nodecluster/node1 && coven start --home coven'
     networks:
       localnet:
         ipv4_address: 192.168.10.3
 
-  petrinode2:
-    container_name: petrinode2
-    image: petrinetwork/petrihub:latest
+  covennode2:
+    container_name: covennode2
+    image: mage-war/coven:latest
     ports:
     - "26661-26662:26656-26657"
     volumes:
     - ./build:/home
-    command: /bin/sh -c 'cd /home/nodecluster/node2 && petri start --home petri'
+    command: /bin/sh -c 'cd /home/nodecluster/node2 && coven start --home coven'
     networks:
       localnet:
         ipv4_address: 192.168.10.4
 
-  petrinode3:
-    container_name: petrinode3
-    image: petrinetwork/petrihub:latest
+  covennode3:
+    container_name: covennode3
+    image: mage-war/coven:latest
     ports:
     - "26663-26664:26656-26657"
     volumes:
     - ./build:/home
-    command: /bin/sh -c 'cd /home/nodecluster/node3 && petri start --home petri'
+    command: /bin/sh -c 'cd /home/nodecluster/node3 && coven start --home coven'
     networks:
       localnet:
         ipv4_address: 192.168.10.5

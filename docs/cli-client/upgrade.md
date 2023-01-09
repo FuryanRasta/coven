@@ -6,17 +6,17 @@ This module provides the basic functions of software version upgrade.
 
 | Name                                                                            | Description                                           |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [software-upgrade](#petri-tx-gov-submit-proposal-software-upgrade)               | Submit a software upgrade proposal                    |
-| [cancel-software-upgrade](#petri-tx-gov-submit-proposal-cancel-software-upgrade) | Cancel the current upgrade proposal                   |
-| [plan](#petri-query-upgrade-plan)                                                | Query the software upgrade plan currently in progress |
-| [applied](#petri-query-upgrade-applied)                                          | Query the executed software upgrade plan              |
+| [software-upgrade](#coven-tx-gov-submit-proposal-software-upgrade)               | Submit a software upgrade proposal                    |
+| [cancel-software-upgrade](#coven-tx-gov-submit-proposal-cancel-software-upgrade) | Cancel the current upgrade proposal                   |
+| [plan](#coven-query-upgrade-plan)                                                | Query the software upgrade plan currently in progress |
+| [applied](#coven-query-upgrade-applied)                                          | Query the executed software upgrade plan              |
 
-## petri tx gov submit-proposal software-upgrade
+## coven tx gov submit-proposal software-upgrade
 
 Initiate a software upgrade proposal through the `Gov` module.
 
 ```bash
-petri tx gov submit-proposal software-upgrade <plan-name> [flags]
+coven tx gov submit-proposal software-upgrade <plan-name> [flags]
 ```
 
 **Flags:**
@@ -36,19 +36,19 @@ If you need to support [cosmovisor](#https://github.com/cosmos/cosmos-sdk/tree/m
 ```json
 {
     "binaries": {
-        "linux/amd64":"https://example.com/petrihub.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
+        "linux/amd64":"https://example.com/coven.zip?checksum=sha256:aec070645fe53ee3b3763059376134f058cc337247c978add178b6ccdfb0019f"
     }
 }
 ```
 
 :::
 
-## petri tx gov submit-proposal cancel-software-upgrade
+## coven tx gov submit-proposal cancel-software-upgrade
 
 Submit cancellation of the currently ongoing software upgrade proposal through the `Gov` module.
 
 ```bash
-petri tx gov submit-proposal cancel-software-upgrade [flags]
+coven tx gov submit-proposal cancel-software-upgrade [flags]
 ```
 
 **Flags:**
@@ -59,18 +59,18 @@ petri tx gov submit-proposal cancel-software-upgrade [flags]
 | --title         | string |          |         | title of proposal       |
 | --description   | string |          |         | description of proposal |
 
-## petri query upgrade plan
+## coven query upgrade plan
 
 Query the currently ongoing software upgrade plan.
 
 ```bash
-petri query upgrade plan [flags]
+coven query upgrade plan [flags]
 ```
 
-## petri query upgrade applied
+## coven query upgrade applied
 
 Query the software upgrade plan that has been executed recently.
 
 ```bash
-petri query upgrade applied <upgrade-name>
+coven query upgrade applied <upgrade-name>
 ```

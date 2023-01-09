@@ -1,4 +1,4 @@
 # White Paper
 
-- [English](https://github.com/petrinetwork/petrinetwork/blob/master/WHITEPAPER.md)
+- [English](https://github.com/mage-war/mage-war/blob/master/WHITEPAPER.md)
 

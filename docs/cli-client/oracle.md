@@ -1,25 +1,25 @@
 # Oracle
 
-Oracle module allows you to manage the feed on PETRI Hub
+Oracle module allows you to manage the feed on COVEN Hub
 
 ## Available Commands
 
 | Name                              | Description                                                                          |
 | --------------------------------- | ------------------------------------------------------------------------------------ |
-| [create](#petri-tx-oracle-create)  | Create a new feed, the feed will be in "paused" state                                |
-| [start](#petri-tx-oracle-start)    | Start a feed in "paused" state                                                       |
-| [pause](#petri-tx-oracle-pause)    | Pause a feed in "running" state                                                      |
-| [edit](#petri-tx-oracle-edit)      | Modify the feed information and update service invocation parameters by feed creator |
-| [feed](#petri-query-oracle-feed)   | Query the feed definition                                                            |
-| [feeds](#petri-query-oracle-feeds) | Query a group of feed definition                                                     |
-| [value](#petri-query-oracle-value) | Query the feed result                                                                |
+| [create](#coven-tx-oracle-create)  | Create a new feed, the feed will be in "paused" state                                |
+| [start](#coven-tx-oracle-start)    | Start a feed in "paused" state                                                       |
+| [pause](#coven-tx-oracle-pause)    | Pause a feed in "running" state                                                      |
+| [edit](#coven-tx-oracle-edit)      | Modify the feed information and update service invocation parameters by feed creator |
+| [feed](#coven-query-oracle-feed)   | Query the feed definition                                                            |
+| [feeds](#coven-query-oracle-feeds) | Query a group of feed definition                                                     |
+| [value](#coven-query-oracle-value) | Query the feed result                                                                |
 
-## petri tx oracle create
+## coven tx oracle create
 
 This command is used to create a new feed, the feed will be in "paused" state.
 
 ```bash
-petri tx oracle create [flags]
+coven tx oracle create [flags]
 ```
 
 **Flags:**
@@ -42,58 +42,58 @@ petri tx oracle create [flags]
 ### Create a new feed
 
 ```bash
-petri tx oracle create \
+coven tx oracle create \
     --feed-name="test-feed" \
     --latest-history=10 \
     --service-name="test-service" \
     --input=<request-data> \
     --providers=<provide1_address>,<provider2_address> \
-    --service-fee-cap=1petri \
+    --service-fee-cap=1coven \
     --timeout=2 \
     --frequency=10 \
     --total=10 \
     --threshold=1 \
     --aggregate-func="avg" \
     --value-json-path="high" \
-    --chain-id=petrihub \
+    --chain-id=coven \
     --from=node0 \
-    --fees=0.3petri
+    --fees=0.3coven
 ```
 
-## petri tx oracle start
+## coven tx oracle start
 
 This command is used to start a feed in "paused" state
 
 ```bash
-petri tx oracle start [feed-name] [flags]
+coven tx oracle start [feed-name] [flags]
 ```
 
 ### Start a "paused" feed
 
 ```bash
-petri tx oracle start test-feed --chain-id=petrihub --from=node0 --fees=0.3petri
+coven tx oracle start test-feed --chain-id=coven --from=node0 --fees=0.3coven
 ```
 
-## petri tx oracle pause
+## coven tx oracle pause
 
 This command is used to pause a feed in "running" state
 
 ```bash
-petri tx oracle pause [feed-name] [flags]
+coven tx oracle pause [feed-name] [flags]
 ```
 
 ### Pause a "running" feed
 
 ```bash
-petri tx oracle pause test-feed --chain-id=petrihub --from=node0 --fees=0.3petri
+coven tx oracle pause test-feed --chain-id=coven --from=node0 --fees=0.3coven
 ```
 
-## petri tx oracle edit
+## coven tx oracle edit
 
-This command is used to edit an existing feed on PETRI Hub.
+This command is used to edit an existing feed on COVEN Hub.
 
 ```bash
-petri tx oracle edit [feed-name] [flags]
+coven tx oracle edit [feed-name] [flags]
 ```
 
 **Flags:**
@@ -112,29 +112,29 @@ petri tx oracle edit [feed-name] [flags]
 ### Edit an existed feed
 
 ```bash
-petri tx oracle edit test-feed --chain-id=petrihub --from=node0 --fees=0.3petri --latest-history=5
+coven tx oracle edit test-feed --chain-id=coven --from=node0 --fees=0.3coven --latest-history=5
 ```
 
-## petri query oracle feed
+## coven query oracle feed
 
 This command is used to query a feed
 
 ```bash
-petri query oracle feed [feed-name] [flags]
+coven query oracle feed [feed-name] [flags]
 ```
 
 ### Query an existed feed
 
 ```bash
-petri query oracle feed test-feed
+coven query oracle feed test-feed
 ```
 
-## petri query oracle feeds
+## coven query oracle feeds
 
 This command is used to query a group of feed
 
 ```bash
-petri query oracle feeds [flags]
+coven query oracle feeds [flags]
 ```
 
 **Flags:**
@@ -146,13 +146,13 @@ petri query oracle feeds [flags]
 ### Query a group of feed
 
 ```bash
-petri query oracle feeds --state=running
+coven query oracle feeds --state=running
 ```
 
-## petri query oracle value
+## coven query oracle value
 
 This command is used to query the result of a specified feed
 
 ```bash
-petri query oracle value test-feed
+coven query oracle value test-feed
 ```

@@ -2,9 +2,9 @@
 order: 5
 ---
 
-# PETRIhub Wallets
+# COVENhub Wallets
 
-These web and mobile wallets allow you to store & transfer PETRI, delegate PETRI to validators, and some of them also support ATOM. Note that we do not endorse any of the wallets, they are listed for your convenience.
+These web and mobile wallets allow you to store & transfer COVEN, delegate COVEN to validators, and some of them also support ATOM. Note that we do not endorse any of the wallets, they are listed for your convenience.
 
 - [Rainbow](https://www.rainbow.one/) (Android，iOS)
 - [Math Wallet](http://www.mathwallet.org/en/) (Android，iOS)

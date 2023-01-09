@@ -5,7 +5,7 @@ order: 3
 # Join The Mainnet
 
 :::tip
-**Requirements:** [install petri](install.md)
+**Requirements:** [install coven](install.md)
 :::
 
 ## Run a Full Node
@@ -13,48 +13,48 @@ order: 3
 ### Start node from genesis
 
 :::tip
-**We recommend running a full node via state sync** (see the next subsection). But if you want to start from genesis, you must use petrihub [v1.0.1](https://github.com/petrinetwork/petrihub/releases/tag/v1.0.1) to initialize your node.
+**We recommend running a full node via state sync** (see the next subsection). But if you want to start from genesis, you must use coven [v1.0.1](https://github.com/mage-war/coven/releases/tag/v1.0.1) to initialize your node.
 :::
 
 ```bash
 # initialize node configurations
-petri init <moniker> --chain-id=petrihub-1
+coven init <moniker> --chain-id=coven-1
 
 # download mainnet public config.toml and genesis.json
-curl -o ~/.petri/config/config.toml https://raw.githubusercontent.com/petrinetwork/mainnet/master/config/config.toml
-curl -o ~/.petri/config/genesis.json https://raw.githubusercontent.com/petrinetwork/mainnet/master/config/genesis.json
+curl -o ~/.coven/config/config.toml https://raw.githubusercontent.com/mage-war/mainnet/master/config/config.toml
+curl -o ~/.coven/config/genesis.json https://raw.githubusercontent.com/mage-war/mainnet/master/config/genesis.json
 
 # start the node (you can also use "nohup" or "systemd" to run in the background)
-petri start
+coven start
 ```
 
 Next, your node will process all chain upgrades. Between each upgrade, you must use the specified version to catch up with the block. Don't worry about using the old version at the upgrade height, the node will be halted automatically.
 
-| Proposal | Start height | Upgrade height | petrihub version |
+| Proposal | Start height | Upgrade height | coven version |
 | -------- | ------------ | -------------- | ----- |
-| genesis  |  9146456     |  9593205  | [v1.0.1](https://github.com/petrinetwork/petrihub/releases/tag/v1.0.1) |
-| [#1](https://petrihub.iobscan.io/#/ProposalsDetail/1)  |  9593206     |    | [v1.1.0](https://github.com/petrinetwork/petrihub/releases/tag/v1.1.0), [v1.1.1](https://github.com/petrinetwork/petrihub/releases/tag/v1.1.1)|
-| [#8](https://petrihub.iobscan.io/#/ProposalsDetail/8)  |  12393048     | 12534300 | [v1.2.0](https://github.com/petrinetwork/petrihub/releases/tag/v1.2.0), [v1.2.1](https://github.com/petrinetwork/petrihub/releases/tag/v1.2.1) |
-| [#11](https://petrihub.iobscan.io/#/ProposalsDetail/11)  |  14166918     |  14301916  | [v1.3.0](https://github.com/petrinetwork/petrihub/releases/tag/v1.3.0) |
-| [#19](https://petrihub.iobscan.io/#/gov/proposals/19)  |       |  17685953  | [v1.4.1](https://github.com/petrinetwork/petrihub/releases/tag/v1.4.1) |
+| genesis  |  9146456     |  9593205  | [v1.0.1](https://github.com/mage-war/coven/releases/tag/v1.0.1) |
+| [#1](https://coven.iobscan.io/#/ProposalsDetail/1)  |  9593206     |    | [v1.1.0](https://github.com/mage-war/coven/releases/tag/v1.1.0), [v1.1.1](https://github.com/mage-war/coven/releases/tag/v1.1.1)|
+| [#8](https://coven.iobscan.io/#/ProposalsDetail/8)  |  12393048     | 12534300 | [v1.2.0](https://github.com/mage-war/coven/releases/tag/v1.2.0), [v1.2.1](https://github.com/mage-war/coven/releases/tag/v1.2.1) |
+| [#11](https://coven.iobscan.io/#/ProposalsDetail/11)  |  14166918     |  14301916  | [v1.3.0](https://github.com/mage-war/coven/releases/tag/v1.3.0) |
+| [#19](https://coven.iobscan.io/#/gov/proposals/19)  |       |  17685953  | [v1.4.1](https://github.com/mage-war/coven/releases/tag/v1.4.1) |
 
 :::tip
 You may see some connection errors, it does not matter, the P2P network is trying to find available connections
 
-Try to add some of the [Community Peers](https://github.com/petrinetwork/mainnet/blob/master/config/community-peers.md) to `persistent_peers` in the config.toml
+Try to add some of the [Community Peers](https://github.com/mage-war/mainnet/blob/master/config/community-peers.md) to `persistent_peers` in the config.toml
 
-If you want to quickly start the node and join PETRI Hub without historical data, you can consider using the [state_sync](./state-sync.md) function.
+If you want to quickly start the node and join COVEN Hub without historical data, you can consider using the [state_sync](./state-sync.md) function.
 :::
 
 ### Quick Start via State Sync
 
 To quickly get started, node operators can choose to sync via State Sync. State Sync works by replaying larger chunks of application state directly rather than replaying individual blocks or consensus rounds.
 
-The newest state sync configs can be found [here](https://ping.pub/petri/statesync). **Please remember to modify state sync configs.**
+The newest state sync configs can be found [here](https://ping.pub/coven/statesync). **Please remember to modify state sync configs.**
 
 ```bash
-# Build petri binary and initialize chain
-petri init <moniker> --chain-id=petrihub-1
+# Build coven binary and initialize chain
+coven init <moniker> --chain-id=coven-1
 
 # Configure State sync
 [statesync]
@@ -64,19 +64,19 @@ trust_height = 17613000
 trust_hash = "990f1eaf06d456bc22891327e006d520cb407f8ad3bfee1edd43df0de1e1da1c"
 trust_period = "168h"  # 2/3 of unbonding time
 
-#Start Petri
-petri start --x-crisis-skip-assert-invariants
+#Start Coven
+coven start --x-crisis-skip-assert-invariants
 ```
 
 ## Upgrade to Validator Node
 
 ### Create a Wallet
 
-You can [create a new wallet](../cli-client/keys.md#create-a-new-key) or [import an existing one](../cli-client/keys.md#recover-an-existing-key-from-seed-phrase), then get some PETRI from the exchanges or anywhere else into the wallet you just created, .e.g.
+You can [create a new wallet](../cli-client/keys.md#create-a-new-key) or [import an existing one](../cli-client/keys.md#recover-an-existing-key-from-seed-phrase), then get some COVEN from the exchanges or anywhere else into the wallet you just created, .e.g.
 
 ```bash
 # create a new wallet
-petri keys add <key-name>
+coven keys add <key-name>
 ```
 
 :::warning
@@ -92,7 +92,7 @@ write the seed phrase in a safe place! It is the only way to recover your accoun
 # apt-get update && apt-get install -y jq
 
 # if the output is false, means your node has caught-up
-petri status | jq .sync_info.catching_up
+coven status | jq .sync_info.catching_up
 ```
 
 ### Create Validator
@@ -100,24 +100,24 @@ petri status | jq .sync_info.catching_up
 Only if your node has caught-up, you can run the following command to upgrade your node to be a validator.
 
 ```bash
-petri tx staking create-validator \
-    --pubkey=$(petri tendermint show-validator) \
+coven tx staking create-validator \
+    --pubkey=$(coven tendermint show-validator) \
     --moniker=<your-validator-name> \
-    --amount=<amount-to-be-delegated, e.g. 10000petri> \
+    --amount=<amount-to-be-delegated, e.g. 10000coven> \
     --min-self-delegation=1 \
     --commission-max-change-rate=0.1 \
     --commission-max-rate=0.1 \
     --commission-rate=0.1 \
     --gas=100000 \
-    --fees=0.6petri \
-    --chain-id=petrihub-1 \
+    --fees=0.6coven \
+    --chain-id=coven-1 \
     --from=<key-name>
 ```
 
 :::warning
 **Important**
 
-Backup the `config` directory located in your petri home (default ~/.petri/) carefully! It is the only way to recover your validator.
+Backup the `config` directory located in your coven home (default ~/.coven/) carefully! It is the only way to recover your validator.
 :::
 
 If there are no errors, then your node is now a validator or candidate (depending on whether your delegation amount is in the top 100)
@@ -133,6 +133,6 @@ Read more:
 
 ## Faucet
 
-Request PETRInetwork mainnet tokens from the Faucet powered by Stakely.
+Request COVENnetwork mainnet tokens from the Faucet powered by Stakely.
 
-For the usage, please refer to the guideline on the Faucet page: https://stakely.io/faucet/petrinetwork-petri
+For the usage, please refer to the guideline on the Faucet page: https://stakely.io/faucet/mage-war-coven

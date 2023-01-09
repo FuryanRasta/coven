@@ -8,11 +8,11 @@ This specification briefly introduces the functionality of stake module and what
 
 ### Voting power
 
-Voting power is a consensus concept. PETRIhub is a Byzantine-fault-tolerant POS blockchain network. During the consensus process, a set of validators will vote the proposal block. If a validator thinks the proposal block is valid, it will vote `yes`, otherwise, it will vote nil. The votes from different validator don't have the same weight. The weight of a vote is called the voting power of the corresponding validator.
+Voting power is a consensus concept. COVENhub is a Byzantine-fault-tolerant POS blockchain network. During the consensus process, a set of validators will vote the proposal block. If a validator thinks the proposal block is valid, it will vote `yes`, otherwise, it will vote nil. The votes from different validator don't have the same weight. The weight of a vote is called the voting power of the corresponding validator.
 
 ### Validator
 
-Validator is a full PETRIhub node. If its voting power is zero, it is just a normal full node or a validator candidate. Once its voting power is positive, then it is a real validator.
+Validator is a full COVENhub node. If its voting power is zero, it is just a normal full node or a validator candidate. Once its voting power is positive, then it is a real validator.
 
 ### Delegator && Delegation
 
@@ -20,7 +20,7 @@ People that cannot, or do not want to run validator nodes, can still participate
 
 :::danger
 **It is strongly NOT recommended that validator operator COMPLETELY unbind self-delegation tokens, Cause the validator will be jailed (removed out of validator set) if he do so. The delegator who bonded tokens to this validator will also suffer losses.
-So, it is recommended that validator operator reserve at least 1 petri while unbonding tokens.**
+So, it is recommended that validator operator reserve at least 1 coven while unbonding tokens.**
 :::
 
 ### Validator Candidates
@@ -50,7 +50,7 @@ As a delegator, the more bonded tokens it has on validator, the more rewards it 
   Users can query their own validators by their wallet address. But firstly users have to convert their wallet addresses to validator operator address pattern:
 
 ```bash
-petri keys show <key-name>
+coven keys show <key-name>
 ```
 
 Example Output:
@@ -68,7 +68,7 @@ Example Output:
 Then, example command to query validator:
 
 ```bash
-petri q staking validator iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke
+coven q staking validator iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke
 ```
 
 Example Output:
@@ -99,26 +99,26 @@ Example Output:
 - Edit validator
 
 ```bash
-petri tx staking edit-validator --from=<key-name> --chain-id=petrihub --fees=0.3petri --commission-rate=0.15 --moniker=<new-name>
+coven tx staking edit-validator --from=<key-name> --chain-id=coven --fees=0.3coven --commission-rate=0.15 --moniker=<new-name>
 ```
 
 - Delegate tokens to other validators
 If you just want to be a delegator, you can skip the above steps.
 
 ```bash
-petri tx staking delegate iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000petri --chain-id=petrihub --from=<key-name> --fees=0.3petri
+coven tx staking delegate iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000coven --chain-id=coven --from=<key-name> --fees=0.3coven
 ```
 
 - Unbond tokens from a validator
 
 ```bash
-petri tx staking unbond iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000petri --chain-id=petrihub --from=<key-name> --fees=0.3petri
+coven tx staking unbond iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke 1000coven --chain-id=coven --from=<key-name> --fees=0.3coven
 ```
   
 - Redelegate tokens to another validator
 
 ```bash
-petri tx staking redelegate iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke iva1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 100petri --from mykey --chain-id=petrihub --from=<key-name> --fees=0.3petri
+coven tx staking redelegate iva14n9md3sq9xwscs96za8n85m0j9y2yu3cagxgke iva1l2rsakp388kuv9k8qzq6lrm9taddae7fpx59wm 100coven --from mykey --chain-id=coven --from=<key-name> --fees=0.3coven
 ```
 
 For other staking commands, please refer to [stake cli client](../cli-client/staking.md)

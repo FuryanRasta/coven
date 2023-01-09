@@ -2,24 +2,24 @@
 order: 5
 ---
 
-# Bech32 on PETRIhub
+# Bech32 on COVENhub
 
-Bech32 is a new Bitcoin address format proposed by Pieter Wuille and Greg Maxwell. Besides Bitcoin addresses, Bech32 can encode any short binary data. In the PETRI network, keys and addresses may refer to a number of different roles in the network like accounts, validators etc. The PETRI network is designed to use the Bech32 address format to provide robust integrity checks on data. The human readable part(HRP) makes it more efficient to read and the users could see error messages. More details in [bip-0173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
+Bech32 is a new Bitcoin address format proposed by Pieter Wuille and Greg Maxwell. Besides Bitcoin addresses, Bech32 can encode any short binary data. In the COVEN network, keys and addresses may refer to a number of different roles in the network like accounts, validators etc. The COVEN network is designed to use the Bech32 address format to provide robust integrity checks on data. The human readable part(HRP) makes it more efficient to read and the users could see error messages. More details in [bip-0173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 
 ## Human Readable Part Table
 
 | HRP | Definition                              |
 | --- | --------------------------------------- |
-| iaa | PETRIhub Account Address                 |
-| iap | PETRIhub Account Public Key              |
-| iva | PETRIhub Validator's Operator Address    |
-| ivp | PETRIhub Validator's Operator Public Key |
+| iaa | COVENhub Account Address                 |
+| iap | COVENhub Account Public Key              |
+| iva | COVENhub Validator's Operator Address    |
+| ivp | COVENhub Validator's Operator Public Key |
 | ica | Tendermint Consensus Address            |
 | icp | Tendermint Consensus Public Key         |
 
 ## Encoding
 
-Not all interfaces to PETRIhub users should be exposed as bech32 interfaces. Many addresses are still in hex or base64 encoded form.
+Not all interfaces to COVENhub users should be exposed as bech32 interfaces. Many addresses are still in hex or base64 encoded form.
 
 To covert between other binary representation of addresses and keys, it is important to first apply the Amino encoding process before bech32 encoding.
 
@@ -36,11 +36,11 @@ This means you have created a new address `iaa18ekc4dswwrh2a6lfyev4tr25h5y76jkpc
 
 ## Validator Key Example
 
-Validator Key, aka. [Tendermint Key](validator-faq.md#tendermint-key). A Tendermint Consensus Public key is generated when the node is created with  `petri init`.
+Validator Key, aka. [Tendermint Key](validator-faq.md#tendermint-key). A Tendermint Consensus Public key is generated when the node is created with  `coven init`.
 You can get this value with
 
 ```bash
-petri tendermint show-validator --home=<petri-home>
+coven tendermint show-validator --home=<coven-home>
 ```
 
 Example Output:

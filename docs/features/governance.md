@@ -8,7 +8,7 @@ The governance process is divided in a few steps that are outlined below:
   deposit.
 
 - **Vote:** Once deposit reaches a certain value (`MinDeposit`), proposal is
-  confirmed and vote opens. Bonded Petri holders can then send `TxGovVote`
+  confirmed and vote opens. Bonded Coven holders can then send `TxGovVote`
   transactions to vote on the proposal.
 
 - If the proposal involves a software upgrade:
@@ -23,7 +23,7 @@ The governance process is divided in a few steps that are outlined below:
 
 #### Right to submit a proposal
 
-Any Petri holder, whether bonded or unbonded, can submit proposals by sending a
+Any Coven holder, whether bonded or unbonded, can submit proposals by sending a
 `TxGovProposal` transaction. Once a proposal is submitted, it is identified by
 its unique `proposalID`.
 
@@ -70,21 +70,21 @@ When a proposal finalized, the coins from the deposit are either refunded or bur
 #### Participants
 
 _Participants_ are users that have the right to vote on proposals. On the
-Cosmos Hub, participants are bonded Petri holders. Unbonded Petri holders and
+Cosmos Hub, participants are bonded Coven holders. Unbonded Coven holders and
 other users do not get the right to participate in governance. However, they
 can submit and deposit on proposals.
 
 Note that some _participants_ can be forbidden to vote on a proposal under a
 certain validator if:
 
-- _participant_ bonded or unbonded Petri to said validator after proposal
+- _participant_ bonded or unbonded Coven to said validator after proposal
   entered voting period.
 
 - _participant_ became validator after proposal entered voting period.
 
-This does not prevent _participant_ to vote with Petri bonded to other
-validators. For example, if a _participant_ bonded some Petri to validator A
-before a proposal entered voting period and other Petri to validator B after
+This does not prevent _participant_ to vote with Coven bonded to other
+validators. For example, if a _participant_ bonded some Coven to validator A
+before a proposal entered voting period and other Coven to validator B after
 proposal entered voting period, only the vote under validator B will be
 forbidden.
 
@@ -132,7 +132,7 @@ that proposals are accepted if the proportion of `Yes` votes (excluding
 proportion of `NoWithVeto` votes is inferior to 1/3 (excluding `Abstain`
 votes).
 
-Proposals can be accepted before the end of the voting period if they meet a special condition. Namely, if the ratio of `Yes` votes to `InitTotalVotingPower`exceeds 2:3, the proposal will be immediately accepted, even if the `Voting period` is not finished. `InitTotalVotingPower` is the total voting power of all bonded Petri holders at the moment when the vote opens.
+Proposals can be accepted before the end of the voting period if they meet a special condition. Namely, if the ratio of `Yes` votes to `InitTotalVotingPower`exceeds 2:3, the proposal will be immediately accepted, even if the `Voting period` is not finished. `InitTotalVotingPower` is the total voting power of all bonded Coven holders at the moment when the vote opens.
 This condition exists so that the network can react quickly in case of urgency.
 
 #### Inheritance
@@ -167,7 +167,7 @@ The parameters of modules can be changed by demand through a proposal of paramet
 
 ```bash
 # Query module parameters which can be changed through gov. e.g. query the service params
-petri query service params
+coven query service params
 
 # Parameter list
 arbitration_time_limit: 432000s
@@ -193,10 +193,10 @@ echo '{
         "value": 150
         }
     ],
-    "deposit": "1000petri"
+    "deposit": "1000coven"
 }' > proposal.json
 
-petri tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=0.3petri --chain-id=petrihub
+coven tx gov submit-proposal param-change proposal.json --from=<key-name> --fees=0.3coven --chain-id=coven
 ```
 
 ### Community pool spending
@@ -209,11 +209,11 @@ echo '{
     "title": "Community Pool Spend",
     "description": "Developer rewards",
     "recipient": "iaa1s5afhd6gxevu37mkqcvvsj8qeylhn0rz46zdlq",
-    "amount": "10000petri",
-    "deposit": "1000petri"
+    "amount": "10000coven",
+    "deposit": "1000coven"
 }' > proposal.json
 
-petri tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=0.3petri --chain-id=petrihub
+coven tx gov submit-proposal community-pool-spend proposal.json --from=<key-name> --fees=0.3coven --chain-id=coven
 ```
 
 ### Software upgrade

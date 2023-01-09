@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 
-	"github.com/petrinetwork/petrihub/modules/mint/types"
+	"github.com/mage-war/coven/modules/mint/types"
 )
 
 func (suite *KeeperTestSuite) TestGRPCQueryPoolParameters() {

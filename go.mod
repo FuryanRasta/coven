@@ -1,4 +1,4 @@
-module github.com/petrinetwork/petrihub
+module github.com/mage-war/coven
 
 go 1.18
 

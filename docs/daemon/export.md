@@ -6,16 +6,16 @@ order: 4
 
 ## Introduction
 
-PETRIhub can export the blockchain state and output to a json-format string which can be used as the genesis file of a new blockchain.
+COVENhub can export the blockchain state and output to a json-format string which can be used as the genesis file of a new blockchain.
 
-By default, PETRIhub stores snapshots of every 10,000 blocks and the last 100 blocks. You can export the blockchain state from any existing snapshot height.
+By default, COVENhub stores snapshots of every 10,000 blocks and the last 100 blocks. You can export the blockchain state from any existing snapshot height.
 
-If you want to export the state from a nonexisting snapshot height, you need to [reset](local-testnet.md#petri-reset) the blockchain state to the specified height first.
+If you want to export the state from a nonexisting snapshot height, you need to [reset](local-testnet.md#coven-reset) the blockchain state to the specified height first.
 
 ## Usage
 
 ```bash
-petri export [flags]
+coven export [flags]
 ```
 
 ## Flags
@@ -24,7 +24,7 @@ petri export [flags]
 | ----------------- | ------ | -------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | --for-zero-height | bool   |          | false        | Do some clean up work before exporting state. If you want to use the exported state to start a new blockchain, please add this flag. Otherwise, just leave out it |
 | --height          | uint   |          | 0            | Export state from a particular height, default value is 0 which means to export the latest state                                                                  |
-| --home            | string |          | $HOME/.petri  | Specify the directory which stores node config and blockchain data                                                                                                |
+| --home            | string |          | $HOME/.coven  | Specify the directory which stores node config and blockchain data                                                                                                |
 | --output-file     | string |          | genesis.json | Target file to save exported state                                                                                                                                |
 
 ## Examples
@@ -32,17 +32,17 @@ petri export [flags]
 Export the current blockchain state
 
 ```bash
-petri export --home=<path-to-your-home>
+coven export --home=<path-to-your-home>
 ```
 
 Export blockchain state from a particular height, the height must be an existing snapshot height
 
 ```bash
-petri export --height 10000 --home=<path-to-your-home>
+coven export --height 10000 --home=<path-to-your-home>
 ```
 
 If you want to export the blockchain state from a particular height and use the exported state as genesis state of another blockchain
 
 ```bash
-petri export --height 10000 --for-zero-height --home=<path-to-your-home>
+coven export --height 10000 --for-zero-height --home=<path-to-your-home>
 ```

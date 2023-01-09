@@ -4,7 +4,7 @@
 ### Simulations
 
 BINDIR ?= $(GOPATH)/bin
-SIMAPP = github.com/petrinetwork/petrihub/app
+SIMAPP = github.com/mage-war/coven/app
 
 test-sim-nondeterminism:
 	@echo "Running non-determinism test..."
@@ -13,22 +13,22 @@ test-sim-nondeterminism:
 
 test-sim-custom-genesis-fast:
 	@echo "Running custom genesis simulation..."
-	@echo "By default, ${HOME}/.petri/config/genesis.json will be used."
-	@go test -mod=readonly $(SIMAPP) -run TestFullPetriSimulation -Genesis=${HOME}/.petri/config/genesis.json \
+	@echo "By default, ${HOME}/.coven/config/genesis.json will be used."
+	@go test -mod=readonly $(SIMAPP) -run TestFullCovenSimulation -Genesis=${HOME}/.coven/config/genesis.json \
 		-Enabled=true -NumBlocks=100 -BlockSize=200 -Commit=true -Seed=99 -Period=5 -v -timeout 24h
 
 test-sim-import-export: runsim
-	@echo "Running Petri import/export simulation. This may take several minutes..."
-	@$(BINDIR)/runsim -Jobs=4 -SimAppPkg=$(SIMAPP) 25 5 TestPetriImportExport
+	@echo "Running Coven import/export simulation. This may take several minutes..."
+	@$(BINDIR)/runsim -Jobs=4 -SimAppPkg=$(SIMAPP) 25 5 TestCovenImportExport
 
 test-sim-after-import: runsim
-	@echo "Running Petri simulation-after-import. This may take several minutes..."
-	@$(BINDIR)/runsim -Jobs=4 -SimAppPkg=$(SIMAPP) 25 5 TestPetriSimulationAfterImport
+	@echo "Running Coven simulation-after-import. This may take several minutes..."
+	@$(BINDIR)/runsim -Jobs=4 -SimAppPkg=$(SIMAPP) 25 5 TestCovenSimulationAfterImport
 
 test-sim-custom-genesis-multi-seed: runsim
 	@echo "Running multi-seed custom genesis simulation..."
-	@echo "By default, ${HOME}/.petri/config/genesis.json will be used."
-	@$(BINDIR)/runsim -Jobs=4 -Genesis=${HOME}/.petri/config/genesis.json 400 5 TestFullPetriSimulation
+	@echo "By default, ${HOME}/.coven/config/genesis.json will be used."
+	@$(BINDIR)/runsim -Jobs=4 -Genesis=${HOME}/.coven/config/genesis.json 400 5 TestFullCovenSimulation
 
 test-sim-multi-seed-long: runsim
 	@echo "Running multi-seed application simulation. This may take awhile!"
@@ -48,16 +48,16 @@ SIM_NUM_BLOCKS ?= 500
 SIM_BLOCK_SIZE ?= 200
 SIM_COMMIT ?= true
 
-test-sim-petri-benchmark:
-	@echo "Running Petri benchmark for numBlocks=$(SIM_NUM_BLOCKS), blockSize=$(SIM_BLOCK_SIZE). This may take awhile!"
-	@go test -mod=readonly -benchmem -run=^$$ $(SIMAPP) -bench ^BenchmarkFullPetriSimulation$$  \
+test-sim-coven-benchmark:
+	@echo "Running Coven benchmark for numBlocks=$(SIM_NUM_BLOCKS), blockSize=$(SIM_BLOCK_SIZE). This may take awhile!"
+	@go test -mod=readonly -benchmem -run=^$$ $(SIMAPP) -bench ^BenchmarkFullCovenSimulation$$  \
 		-Enabled=true -NumBlocks=$(SIM_NUM_BLOCKS) -BlockSize=$(SIM_BLOCK_SIZE) -Commit=$(SIM_COMMIT) -timeout 24h
 
-test-sim-petri-profile:
-	@echo "Running Petri benchmark for numBlocks=$(SIM_NUM_BLOCKS), blockSize=$(SIM_BLOCK_SIZE). This may take awhile!"
-	@go test -mod=readonly -benchmem -run=^$$ $(SIMAPP) -bench ^BenchmarkFullPetriSimulation$$ \
+test-sim-coven-profile:
+	@echo "Running Coven benchmark for numBlocks=$(SIM_NUM_BLOCKS), blockSize=$(SIM_BLOCK_SIZE). This may take awhile!"
+	@go test -mod=readonly -benchmem -run=^$$ $(SIMAPP) -bench ^BenchmarkFullCovenSimulation$$ \
 		-Enabled=true -NumBlocks=$(SIM_NUM_BLOCKS) -BlockSize=$(SIM_BLOCK_SIZE) -Commit=$(SIM_COMMIT) -timeout 24h -cpuprofile cpu.out -memprofile mem.out
 
-.PHONY: runsim test-sim-petri-nondeterminism test-sim-petri-custom-genesis-fast test-sim-petri-fast sim-petri-import-export \
-	test-sim-petri-simulation-after-import test-sim-petri-custom-genesis-multi-seed test-sim-petri-multi-seed \
-	test-sim-benchmark-invariants test-sim-petri-benchmark test-sim-petri-profile
+.PHONY: runsim test-sim-coven-nondeterminism test-sim-coven-custom-genesis-fast test-sim-coven-fast sim-coven-import-export \
+	test-sim-coven-simulation-after-import test-sim-coven-custom-genesis-multi-seed test-sim-coven-multi-seed \
+	test-sim-benchmark-invariants test-sim-coven-benchmark test-sim-coven-profile

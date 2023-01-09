@@ -2,7 +2,7 @@
 
 ## Summary
 
-PETRIhub introduce two types of privileged system user controlled by foundations, the profiler and the trustee.
+COVENhub introduce two types of privileged system user controlled by foundations, the profiler and the trustee.
 
 * Profiler privileges
     1. Submit software upgrade/halt proposal by governance.
@@ -23,13 +23,13 @@ PETRIhub introduce two types of privileged system user controlled by foundations
     Add Profiler (Genesis Profiler account only)
 
     ```bash
-    petri tx guardian add-profiler --address=<profiler-address> --description=<profiler-description> --chain-id=petrihub --from=<key-name> --fees=0.3petri
+    coven tx guardian add-profiler --address=<profiler-address> --description=<profiler-description> --chain-id=coven --from=<key-name> --fees=0.3coven
     ```
 
     Add Trustee (Genesis Trustee account only)
 
     ```bash
-    petri tx guardian add-trustee --address=<trustee-address> --description=<trustee-description> --chain-id=petrihub --from=<key-name> --fees=0.3petri
+    coven tx guardian add-trustee --address=<trustee-address> --description=<trustee-description> --chain-id=coven --from=<key-name> --fees=0.3coven
     ```
 
 2. Query Profiler and Trustee list
@@ -37,13 +37,13 @@ PETRIhub introduce two types of privileged system user controlled by foundations
     Query Profiler list
 
     ```bash
-    petri q guardian profilers
+    coven q guardian profilers
     ```
 
     Query Trustee list
 
     ```bash
-    petri q guardian trustees
+    coven q guardian trustees
     ```
 
 3. Profiler submit software upgrade/halt proposal
@@ -55,7 +55,7 @@ PETRIhub introduce two types of privileged system user controlled by foundations
     Service fee exempted
 
     ```bash
-    petri tx service call --def-chain-id=<def-chain-id> --service-name=<service-name> --method-id=<method-id> --bind-chain-id=<bind-chain-id> --provider=<provider-address> --service-fee=1petri --request-data=<request-data> --chain-id=petrihub --from=<key-name> --fees=0.3petri --profiling=true
+    coven tx service call --def-chain-id=<def-chain-id> --service-name=<service-name> --method-id=<method-id> --bind-chain-id=<bind-chain-id> --provider=<provider-address> --service-fee=1coven --request-data=<request-data> --chain-id=coven --from=<key-name> --fees=0.3coven --profiling=true
     ```
 
 5. Trustee to be the destination address of `CommunityTaxUsage` proposal
@@ -67,11 +67,11 @@ PETRIhub introduce two types of privileged system user controlled by foundations
     Delete Profiler (Genesis Trustee account only)
 
     ```bash
-    petri tx guardian delete-profiler --chain-id=petrihub --from=<key-name> --fees=0.3petri --address=<profiler-address>
+    coven tx guardian delete-profiler --chain-id=coven --from=<key-name> --fees=0.3coven --address=<profiler-address>
     ```
 
     Delete Trustee (Genesis Trustee account only)
 
     ```bash
-    petri tx guardian delete-trustee --chain-id=petrihub --from=<key-name> --fees=0.3petri --address=<trustee-address>
+    coven tx guardian delete-trustee --chain-id=coven --from=<key-name> --fees=0.3coven --address=<trustee-address>
     ```

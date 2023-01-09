@@ -4,7 +4,7 @@ order: 7
 
 # State Sync
 
-If you want to quickly start the node and join PETRI Hub without historical data, you can consider using the `state_sync` feature. **Note that the data directory must be empty when starting the node.**
+If you want to quickly start the node and join COVEN Hub without historical data, you can consider using the `state_sync` feature. **Note that the data directory must be empty when starting the node.**
 
 ## Procedure
 
@@ -22,7 +22,7 @@ curl http://34.82.96.8:26658/
 enable = true # whether enable stat_sync; set true
 rpc_servers = "34.82.96.8:26657,34.77.68.145:26657" # RPC server address which the node connects to
 trust_height = # Set to the block height of the latest snapshot
-trust_hash = "" #Set to the hash corresponding to the latest snapshot block height (trust height), which can be checked via https://petrihub.iobscan.io/#/block/<trust_height>.
+trust_hash = "" #Set to the hash corresponding to the latest snapshot block height (trust height), which can be checked via https://coven.iobscan.io/#/block/<trust_height>.
 trust_period = "168h0m0s"
 discovery_time = "15s"
 temp_dir = ""
@@ -31,10 +31,10 @@ temp_dir = ""
 4. Start the node.
 
 ```bash
-petri start
+coven start
 ```
 
 ## Others
 
-1. If any problem occurs during chain starting, you can execute `petri unsafe-reset-all` to reset the node and repeat the steps above.
-2. If you can't find solutions to the current issue, please contact us via [PETRInetwork Discord channel](https://discord.com/invite/bmhu9F9xbX) for help.
+1. If any problem occurs during chain starting, you can execute `coven unsafe-reset-all` to reset the node and repeat the steps above.
+2. If you can't find solutions to the current issue, please contact us via [COVENnetwork Discord channel](https://discord.com/invite/bmhu9F9xbX) for help.

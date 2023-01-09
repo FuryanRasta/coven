@@ -26,15 +26,15 @@ cargo install tmkms --features=yubihsm --version=0.10.0-beta2
 
 ## Initialization
 
-Initialize configuration files for PETRIhub
+Initialize configuration files for COVENhub
 
 ```bash
-tmkms init -n petrihub /path/to/kms/home
+tmkms init -n coven /path/to/kms/home
 ```
 
 ## Configuration
 
-To enable KMS, you need to edit the `priv_validator_laddr` in your `<petri-home>/config/config.toml` file first. e.g.:
+To enable KMS, you need to edit the `priv_validator_laddr` in your `<coven-home>/config/config.toml` file first. e.g.:
 
 ```toml
 # TCP or UNIX socket address for Tendermint to listen on for
@@ -42,14 +42,14 @@ To enable KMS, you need to edit the `priv_validator_laddr` in your `<petri-home>
 priv_validator_laddr = "localhost:26658"
 ```
 
-Then, downLoad [priv_validator_state.json example](https://github.com/petrinetwork/petrihub/blob/master/docs/tools/priv_validator_state.json) and modify all field values to match your `<petri-home>/data/priv_validator_state.json` values.
+Then, downLoad [priv_validator_state.json example](https://github.com/mage-war/coven/blob/master/docs/tools/priv_validator_state.json) and modify all field values to match your `<coven-home>/data/priv_validator_state.json` values.
 
 Next, you just need to edit the configuration file `/path/to/kms/home/tmkms.toml` as follows:
 
 - Configure `state_file` as the `priv_validator_state.json` completed in the previous step.
 - Write your Yubihsm password to file `yubihsm-password.txt` and configure `password_file` as it.
-- Edit `addr` to point to your `petri` instance(note: no need to specify the connection id, just like tcp://localhost:26658).
-- Adjust `chain_id` to match your `<petri-home>/config/genesis.json` settings.
+- Edit `addr` to point to your `coven` instance(note: no need to specify the connection id, just like tcp://localhost:26658).
+- Adjust `chain_id` to match your `<coven-home>/config/genesis.json` settings.
 - Edit `auth` to authorize access to your Yubihsm.
 - Edit `keys` to determine which pubkey you will be using.
 - Edit `protocol_version` to v0.34.
@@ -64,8 +64,8 @@ tmkms start -c /path/to/kms/home/tmkms.toml
 
 Detailed information on how to setup a KMS with YubiHSM2 can be found [here](https://github.com/iqlusioninc/tmkms/blob/master/README.yubihsm.md).
 
-If you want to import an existing PETRIhub private_key:
+If you want to import an existing COVENhub private_key:
 
 ```bash
-tmkms yubihsm keys import <petri_home>/config/priv_validator.json -i <id> -t json -c /path/to/kms/home/tmkms.toml
+tmkms yubihsm keys import <coven_home>/config/priv_validator.json -i <id> -t json -c /path/to/kms/home/tmkms.toml
 ```

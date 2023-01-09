@@ -6,25 +6,25 @@
 
 | Name                                          | Description                                                                                         |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [issue](#petri-tx-nft-issue)                   | Specify the nft Denom (nft classification) and metadata JSON Schema to issue nft.                   |
-| [transfer-denom](#petri-tx-nft-transfer-denom) | The owner of the NFT classification can transfer the ownership of the NFT classification to others. |
-| [mint](#petri-tx-nft-mint)                     | Additional issuance (create) of specific nft of this type can be made.                              |
-| [edit](#petri-tx-nft-edit)                     | The metadata of the specified nft can be updated.                                                   |
-| [transfer](#petri-tx-nft-transfer)             | Transfer designated nft.                                                                            |
-| [burn](#petri-tx-nft-burn)                     | Destroy the created nft.                                                                            |
-| [supply](#petri-query-nft-supply)              | Query the total amount of nft according to Denom; accept the optional owner parameter.              |
-| [owner](#petri-query-nft-owner)                | Query all nft owned by an account; you can specify the Denom parameter.                             |
-| [collection](#petri-query-nft-collection)      | Query all nft according to Denom.                                                                   |
-| [denom](#petri-query-nft-denom)                | Query nft denom information based on Denom.                                                         |
-| [denoms](#petri-query-nft-denoms)              | Query the total amount of nft according to Denom; accept the optional owner parameter.              |
-| [token](#petri-query-nft-token)                | Query specific nft based on Denom and ID.                                                           |
+| [issue](#coven-tx-nft-issue)                   | Specify the nft Denom (nft classification) and metadata JSON Schema to issue nft.                   |
+| [transfer-denom](#coven-tx-nft-transfer-denom) | The owner of the NFT classification can transfer the ownership of the NFT classification to others. |
+| [mint](#coven-tx-nft-mint)                     | Additional issuance (create) of specific nft of this type can be made.                              |
+| [edit](#coven-tx-nft-edit)                     | The metadata of the specified nft can be updated.                                                   |
+| [transfer](#coven-tx-nft-transfer)             | Transfer designated nft.                                                                            |
+| [burn](#coven-tx-nft-burn)                     | Destroy the created nft.                                                                            |
+| [supply](#coven-query-nft-supply)              | Query the total amount of nft according to Denom; accept the optional owner parameter.              |
+| [owner](#coven-query-nft-owner)                | Query all nft owned by an account; you can specify the Denom parameter.                             |
+| [collection](#coven-query-nft-collection)      | Query all nft according to Denom.                                                                   |
+| [denom](#coven-query-nft-denom)                | Query nft denom information based on Denom.                                                         |
+| [denoms](#coven-query-nft-denoms)              | Query the total amount of nft according to Denom; accept the optional owner parameter.              |
+| [token](#coven-query-nft-token)                | Query specific nft based on Denom and ID.                                                           |
 
-## petri tx nft issue
+## coven tx nft issue
 
 Specify the nft Denom (nft classification) and metadata JSON Schema to issue nft.
 
 ```bash
-petri tx nft issue [denom-id] [flags]
+coven tx nft issue [denom-id] [flags]
 ```
 
 **Flags:**
@@ -39,20 +39,20 @@ petri tx nft issue [denom-id] [flags]
 | --mint-restricted   |          | This field indicates whether there are restrictions on the issuance of NFTs under this classification, true means that only Denom owners can issue NFTs under this classification, false means anyone can                   |             |
 | --update-restricted |          | This field indicates whether there are restrictions on updating NFTs under this classification, true means that no one under this classification can update the NFT, false means that only the owner of this NFT can update |             |
 
-## petri tx nft transfer-denom
+## coven tx nft transfer-denom
 
 The owner of the NFT classification can transfer the ownership of the NFT classification to others.
 
 ```bash
-petri tx nft transfer-denom [recipient] [denom-id]
+coven tx nft transfer-denom [recipient] [denom-id]
 ```
 
-## petri tx nft mint
+## coven tx nft mint
 
 Additional issuance (create) of specific nft of this type can be made.  
 
 ```bash
-petri tx nft mint [denomID] [tokenID] [flags]
+coven tx nft mint [denomID] [tokenID] [flags]
 ```
 
 **Flags:**
@@ -63,12 +63,12 @@ petri tx nft mint [denomID] [tokenID] [flags]
 | --recipient     |          | Receiver of the nft         |             |
 | --name          |          | The name of nft             |             |
 
-## petri tx nft edit
+## coven tx nft edit
 
 The metadata of the specified nft can be updated.
 
 ```bash
-petri tx nft edit [denomID] [tokenID] [flags]
+coven tx nft edit [denomID] [tokenID] [flags]
 ```
 
 **Flags:**
@@ -78,12 +78,12 @@ petri tx nft edit [denomID] [tokenID] [flags]
 | --uri           |          | URI of off-chain token data |             |
 | --name          |          | The name of nft             |             |
 
-## petri tx nft transfer
+## coven tx nft transfer
 
 Transfer designated nft.
 
 ```bash
-petri tx nft transfer [recipient] [denomID] [tokenID] [flags]
+coven tx nft transfer [recipient] [denomID] [tokenID] [flags]
 ```
 
 **Flags:**
@@ -93,52 +93,52 @@ petri tx nft transfer [recipient] [denomID] [tokenID] [flags]
 | --uri           |          | URI of off-chain token data |             |
 | --name          |          | The name of nft             |             |
 
-## petri tx nft burn
+## coven tx nft burn
 
 Destroy the created nft.
 
 ```bash
-petri tx nft burn [denomID] [tokenID] [flags]
+coven tx nft burn [denomID] [tokenID] [flags]
 ```
 
-## petri query nft
+## coven query nft
 
 Query nft
 
-### petri query nft supply
+### coven query nft supply
 
 ```bash
-petri query nft supply [denomID]
-petri query nft supply [denomID] --owner=<owner address>
+coven query nft supply [denomID]
+coven query nft supply [denomID] --owner=<owner address>
 ```
 
-### petri query nft owner
+### coven query nft owner
 
 ```bash
-petri query nft owner [owner address]
-petri query nft owner [owner address] --denom=<denomID>
+coven query nft owner [owner address]
+coven query nft owner [owner address] --denom=<denomID>
 ```
 
-### petri query nft collection
+### coven query nft collection
 
 ```bash
-petri query nft collection [denomID]
+coven query nft collection [denomID]
 ```
 
-### petri query nft denom
+### coven query nft denom
 
 ```bash
-petri query nft denom [denomID]
+coven query nft denom [denomID]
 ```
 
-### petri query nft denoms
+### coven query nft denoms
 
 ```bash
-petri query nft denoms
+coven query nft denoms
 ```
 
-### petri query nft token
+### coven query nft token
 
 ```bash
-petri query nft token [denomID] [tokenID]
+coven query nft token [denomID] [tokenID]
 ```

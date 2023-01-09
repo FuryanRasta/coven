@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "petri-service-result",
-    "description": "PETRI Service Result Schema",
+    "title": "coven-service-result",
+    "description": "COVEN Service Result Schema",
     "type": "object",
     "properties": {
         "code": {

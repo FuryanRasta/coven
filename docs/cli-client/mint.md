@@ -6,12 +6,12 @@ Mint module is in charge of calculating the inflated token amount and add the in
 
 | Name                              | Description                       |
 | --------------------------------- | --------------------------------- |
-| [params](#petri-query-mint-params) | Query the current mint parameters |
+| [params](#coven-query-mint-params) | Query the current mint parameters |
 
-### petri query mint params
+### coven query mint params
 
 Query the current mint parameters.
 
 ```bash
-petri query mint params [flags]
+coven query mint params [flags]
 ```

@@ -52,8 +52,8 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=petri \
-		  -X github.com/cosmos/cosmos-sdk/version.AppName=petri \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=coven \
+		  -X github.com/cosmos/cosmos-sdk/version.AppName=coven \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
@@ -75,18 +75,18 @@ include contrib/devtools/Makefile
 
 build: go.sum
 ifeq ($(OS),Windows_NT)
-	go build $(BUILD_FLAGS) -o build/petri.exe ./cmd/petri
+	go build $(BUILD_FLAGS) -o build/coven.exe ./cmd/coven
 else
-	go build $(BUILD_FLAGS) -o build/petri ./cmd/petri
+	go build $(BUILD_FLAGS) -o build/coven ./cmd/coven
 endif
 
 build-linux: go.sum
 	LEDGER_ENABLED=false GOOS=linux GOARCH=amd64 $(MAKE) build
 
 build-all-binary: go.sum
-	LEDGER_ENABLED=false GOOS=linux GOARCH=amd64 go build $(BUILD_FLAGS) CGO_ENABLED=1 -o build/petri-linux-amd64 ./cmd/petri
-	LEDGER_ENABLED=false GOOS=linux GOARCH=arm64 go build $(BUILD_FLAGS) CGO_ENABLED=1 -o build/petri-linux-arm64 ./cmd/petri
-	LEDGER_ENABLED=false GOOS=windows GOARCH=amd64 go build $(BUILD_FLAGS) CGO_ENABLED=1 -o build/petri-windows-amd64.exe ./cmd/petri
+	LEDGER_ENABLED=false GOOS=linux GOARCH=amd64 go build $(BUILD_FLAGS) CGO_ENABLED=1 -o build/coven-linux-amd64 ./cmd/coven
+	LEDGER_ENABLED=false GOOS=linux GOARCH=arm64 go build $(BUILD_FLAGS) CGO_ENABLED=1 -o build/coven-linux-arm64 ./cmd/coven
+	LEDGER_ENABLED=false GOOS=windows GOARCH=amd64 go build $(BUILD_FLAGS) CGO_ENABLED=1 -o build/coven-windows-amd64.exe ./cmd/coven
 
 build-contract-tests-hooks:
 ifeq ($(OS),Windows_NT)
@@ -96,7 +96,7 @@ else
 endif
 
 install: go.sum
-	go install $(BUILD_FLAGS) ./cmd/petri
+	go install $(BUILD_FLAGS) ./cmd/coven
 
 update-swagger-docs: statik proto-swagger-gen
 	$(BINDIR)/statik -src=lite/swagger-ui -dest=lite -f -m
@@ -122,7 +122,7 @@ go.sum: go.mod
 draw-deps:
 	@# requires brew install graphviz or apt-get install graphviz
 	go get github.com/RobotsAndPencils/goviz
-	@goviz -i ./cmd/petri -d 2 | dot -Tpng -o dependency-graph.png
+	@goviz -i ./cmd/coven -d 2 | dot -Tpng -o dependency-graph.png
 
 clean:
 	rm -rf snapcraft-local.yaml build/ tmp-swagger-gen/
@@ -187,7 +187,7 @@ lint: golangci-lint
 format:
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./lite/statik/statik.go" -not -path "*.pb.go" | xargs gofmt -w -s
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./lite/statik/statik.go" -not -path "*.pb.go" | xargs misspell -w
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./lite/statik/statik.go" -not -path "*.pb.go" | xargs goimports -w -local github.com/petrinetwork/petrihub
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./lite/statik/statik.go" -not -path "*.pb.go" | xargs goimports -w -local github.com/mage-war/coven
 
 benchmark:
 	@go test -mod=readonly -bench=. ./...
@@ -197,16 +197,16 @@ benchmark:
 ### Local validator nodes using docker and docker-compose
 
 testnet-init:
-	@if ! [ -f build/nodecluster/node0/petri/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/home petrinetwork/petrihub petri testnet --v 4 --output-dir /home/nodecluster --chain-id petrihub-test --keyring-backend test --starting-ip-address 192.168.10.2 ; fi
+	@if ! [ -f build/nodecluster/node0/coven/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/home mage-war/coven coven testnet --v 4 --output-dir /home/nodecluster --chain-id coven-test --keyring-backend test --starting-ip-address 192.168.10.2 ; fi
 	@echo "To install jq command, please refer to this page: https://stedolan.github.io/jq/download/"
-	@jq '.app_state.auth.accounts+= [{"@type":"/cosmos.auth.v1beta1.BaseAccount","address":"iaa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","pub_key":null,"account_number":"0","sequence":"0"}] | .app_state.bank.balances+= [{"address":"iaa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","coins":[{"denom":"upetri","amount":"1000000000000"}]}]' build/nodecluster/node0/petri/config/genesis.json > build/genesis_temp.json ;
-	@sudo cp build/genesis_temp.json build/nodecluster/node0/petri/config/genesis.json
-	@sudo cp build/genesis_temp.json build/nodecluster/node1/petri/config/genesis.json
-	@sudo cp build/genesis_temp.json build/nodecluster/node2/petri/config/genesis.json
-	@sudo cp build/genesis_temp.json build/nodecluster/node3/petri/config/genesis.json
+	@jq '.app_state.auth.accounts+= [{"@type":"/cosmos.auth.v1beta1.BaseAccount","address":"iaa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","pub_key":null,"account_number":"0","sequence":"0"}] | .app_state.bank.balances+= [{"address":"iaa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx","coins":[{"denom":"ucoven","amount":"1000000000000"}]}]' build/nodecluster/node0/coven/config/genesis.json > build/genesis_temp.json ;
+	@sudo cp build/genesis_temp.json build/nodecluster/node0/coven/config/genesis.json
+	@sudo cp build/genesis_temp.json build/nodecluster/node1/coven/config/genesis.json
+	@sudo cp build/genesis_temp.json build/nodecluster/node2/coven/config/genesis.json
+	@sudo cp build/genesis_temp.json build/nodecluster/node3/coven/config/genesis.json
 	@rm build/genesis_temp.json
 	@echo "Faucet address: iaa1ljemm0yznz58qxxs8xyak7fashcfxf5lgl4zjx" ;
-	@echo "Faucet coin amount: 1000000000000upetri"
+	@echo "Faucet coin amount: 1000000000000ucoven"
 	@echo "Faucet key seed: tube lonely pause spring gym veteran know want grid tired taxi such same mesh charge orient bracket ozone concert once good quick dry boss"
 
 testnet-start:

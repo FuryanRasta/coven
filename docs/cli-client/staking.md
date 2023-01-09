@@ -6,54 +6,54 @@ Staking module provides a set of subcommands to query staking state and send sta
 
 | Name                                                                         | Description                                                                                   |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [validator](#petri-query-staking-validator)                                   | Query a validator                                                                             |
-| [validators](#petri-query-staking-validators)                                 | Query for all validators                                                                      |
-| [delegation](#petri-query-staking-delegation)                                 | Query a delegation based on address and validator address                                     |
-| [delegations](#petri-query-staking-delegations)                               | Query all delegations made from one delegator                                                 |
-| [delegations-to](#petri-query-staking-delegations-to)                         | Query all delegations to one validator                                                        |
-| [unbonding-delegation](#petri-query-staking-unbonding-delegation)             | Query an unbonding-delegation record based on delegator and validator address                 |
-| [unbonding-delegations](#petri-query-staking-unbonding-delegations)           | Query all unbonding-delegations records for one delegator                                     |
-| [unbonding-delegations-from](#petri-query-staking-unbonding-delegations-from) | Query all unbonding delegatations from a validator                                            |
-| [redelegations-from](#petri-query-staking-redelegations-from)                 | Query all outgoing redelegatations from a validator                                           |
-| [redelegation](#petri-query-staking-redelegation)                             | Query a redelegation record based on delegator and a source and destination validator address |
-| [redelegations](#petri-query-staking-redelegations)                           | Query all redelegations records for one delegator                                             |
-| [pool](#petri-query-staking-pool)                                             | Query the current staking pool values                                                         |
-| [params](#petri-query-staking-params)                                         | Query the current staking parameters information                                              |
-| [historical-info](#petri-query-staking-historical-info)                       | Query historical info at given height                                                         |
-| [create-validator](#petri-tx-staking-create-validator)                        | Create new validator initialized with a self-delegation to it                                 |
-| [edit-validator](#petri-tx-staking-edit-validator)                            | Edit existing validator account                                                               |
-| [delegate](#petri-tx-staking-delegate)                                        | Delegate liquid tokens to an validator                                                        |
-| [unbond](#petri-tx-staking-unbond)                                            | Unbond shares from a validator                                                                |
-| [redelegate](#petri-tx-staking-redelegate)                                    | Redelegate illiquid tokens from one validator to another                                      |
+| [validator](#coven-query-staking-validator)                                   | Query a validator                                                                             |
+| [validators](#coven-query-staking-validators)                                 | Query for all validators                                                                      |
+| [delegation](#coven-query-staking-delegation)                                 | Query a delegation based on address and validator address                                     |
+| [delegations](#coven-query-staking-delegations)                               | Query all delegations made from one delegator                                                 |
+| [delegations-to](#coven-query-staking-delegations-to)                         | Query all delegations to one validator                                                        |
+| [unbonding-delegation](#coven-query-staking-unbonding-delegation)             | Query an unbonding-delegation record based on delegator and validator address                 |
+| [unbonding-delegations](#coven-query-staking-unbonding-delegations)           | Query all unbonding-delegations records for one delegator                                     |
+| [unbonding-delegations-from](#coven-query-staking-unbonding-delegations-from) | Query all unbonding delegatations from a validator                                            |
+| [redelegations-from](#coven-query-staking-redelegations-from)                 | Query all outgoing redelegatations from a validator                                           |
+| [redelegation](#coven-query-staking-redelegation)                             | Query a redelegation record based on delegator and a source and destination validator address |
+| [redelegations](#coven-query-staking-redelegations)                           | Query all redelegations records for one delegator                                             |
+| [pool](#coven-query-staking-pool)                                             | Query the current staking pool values                                                         |
+| [params](#coven-query-staking-params)                                         | Query the current staking parameters information                                              |
+| [historical-info](#coven-query-staking-historical-info)                       | Query historical info at given height                                                         |
+| [create-validator](#coven-tx-staking-create-validator)                        | Create new validator initialized with a self-delegation to it                                 |
+| [edit-validator](#coven-tx-staking-edit-validator)                            | Edit existing validator account                                                               |
+| [delegate](#coven-tx-staking-delegate)                                        | Delegate liquid tokens to an validator                                                        |
+| [unbond](#coven-tx-staking-unbond)                                            | Unbond shares from a validator                                                                |
+| [redelegate](#coven-tx-staking-redelegate)                                    | Redelegate illiquid tokens from one validator to another                                      |
 
-## petri query staking validator
+## coven query staking validator
 
 ### Query a validator by validator address
 
 ```bash
-petri query staking validator <iva...>
+coven query staking validator <iva...>
 ```
 
-## petri query staking validators
+## coven query staking validators
 
 ### Query all validators
 
 ```bash
-petri query staking validators
+coven query staking validators
 ```
 
-## petri query staking delegation
+## coven query staking delegation
 
 Query a delegation based on delegator address and validator address.
 
 ```bash
-petri query staking delegation [delegator-addr] [validator-addr]
+coven query staking delegation [delegator-addr] [validator-addr]
 ```
 
 ### Query a delegation
 
 ```bash
-petri query staking delegation <iaa...> <iva...>
+coven query staking delegation <iaa...> <iva...>
 ```
 
 Example Output:
@@ -66,32 +66,32 @@ Delegation:
   Height:     26
 ```
 
-## petri query staking delegations
+## coven query staking delegations
 
 Query all delegations delegated from one delegator.
 
 ```bash
-petri query staking delegations [delegator-address] [flags]
+coven query staking delegations [delegator-address] [flags]
 ```
 
 ### Query all delegations of a delegator
 
 ```bash
-petri query staking delegations <iaa...>
+coven query staking delegations <iaa...>
 ```
 
-## petri query staking delegations-to
+## coven query staking delegations-to
 
 Query all delegations to one validator.
 
 ```bash
-petri query staking delegations-to [validator-address] [flags]
+coven query staking delegations-to [validator-address] [flags]
 ```
 
 ### Query all delegations to one validator
 
 ```bash
-petri query staking delegations-to <iva...>
+coven query staking delegations-to <iva...>
 ```
 
 Example Output:
@@ -109,78 +109,78 @@ Delegation:
   Height:     26
 ```
 
-## petri query staking unbonding-delegation
+## coven query staking unbonding-delegation
 
 Query an unbonding-delegation record based on delegator and validator address.
 
 ```bash
-petri query staking unbonding-delegation [delegator-addr] [validator-addr] [flags]
+coven query staking unbonding-delegation [delegator-addr] [validator-addr] [flags]
 ```
 
 ### Query an unbonding delegation record
 
 ```bash
-petri query staking unbonding-delegation <iaa...> <iva...>
+coven query staking unbonding-delegation <iaa...> <iva...>
 ```
 
-## petri query staking unbonding-delegations
+## coven query staking unbonding-delegations
 
 ### Query all unbonding delegations records of a delegator
 
 ```bash
-petri query staking unbonding-delegations <iaa...>
+coven query staking unbonding-delegations <iaa...>
 ```
 
-## petri query staking unbonding-delegations-from
+## coven query staking unbonding-delegations-from
 
 ### Query all unbonding delegations from a validator
 
 ```bash
-petri query staking unbonding-delegations-from <iva...>
+coven query staking unbonding-delegations-from <iva...>
 ```
 
-## petri query staking redelegations-from
+## coven query staking redelegations-from
 
 Query all outgoing redelegations of a validator
 
 ```bash
-petri query staking redelegations-from [validator-address] [flags]
+coven query staking redelegations-from [validator-address] [flags]
 ```
 
 ### Query all outgoing redelegatations of a validator
 
 ```bash
-petri query staking redelegations-from <iva...>
+coven query staking redelegations-from <iva...>
 ```
 
-## petri query staking redelegation
+## coven query staking redelegation
 
 Query a redelegation record based on delegator and source validator address and destination validator address.
 
 ```bash
-petri query staking redelegation [delegator-addr] [src-validator-addr] [dst-validator-addr] [flags]
+coven query staking redelegation [delegator-addr] [src-validator-addr] [dst-validator-addr] [flags]
 ```
 
 ### Query a redelegation record
 
 ```bash
-petri query staking redelegation <iaa...> <iva...> <iva...>
+coven query staking redelegation <iaa...> <iva...> <iva...>
 ```
 
-## petri query staking redelegations
+## coven query staking redelegations
 
 ### Query all redelegations records of a delegator
 
 ```bash
-petri query staking redelegations <iaa...>
+coven query staking redelegations <iaa...>
 ```
 
-## petri query staking pool
+## coven query staking pool
 
 ### Query the current staking pool values
 
 ```bash
-petri query staking pool
+coven query staking pool
 ```
 
 Example Output:
@@ -193,28 +193,28 @@ Pool:
   Bonded Ratio:   0.2952602076
 ```
 
-## petri query staking params
+## coven query staking params
 
 ### Query the current staking parameters information
 
 ```bash
-petri query staking params
+coven query staking params
 ```
 
-## petri query staking historical-info
+## coven query staking historical-info
 
 ### Query historical info at given height
 
 ```bash
-petri query staking historical-info <height>
+coven query staking historical-info <height>
 ```
 
-## petri tx staking create-validator
+## coven tx staking create-validator
 
-Send a transaction to apply to be a validator and delegate a certain amount of petri to it.
+Send a transaction to apply to be a validator and delegate a certain amount of coven to it.
 
 ```bash
-petri tx staking create-validator [flags]
+coven tx staking create-validator [flags]
 ```
 
 **Flags:**
@@ -239,19 +239,19 @@ petri tx staking create-validator [flags]
 ### Create a validator
 
 ```bash
-petri tx staking create-validator --chain-id=petrihub --from=<key-name> --fees=0.3petri --pubkey=<validator-pubKey> --commission-rate=0.1 --amount=100petri --moniker=<validator-name>
+coven tx staking create-validator --chain-id=coven --from=<key-name> --fees=0.3coven --pubkey=<validator-pubKey> --commission-rate=0.1 --amount=100coven --moniker=<validator-name>
 ```
 
 :::tip
 Follow the [Mainnet](../get-started/mainnet.md#create-validator) instructions to learn more.
 :::
 
-## petri tx staking edit-validator
+## coven tx staking edit-validator
 
 Edit an existing validator's settings, such as commission rate, name, etc.
 
 ```bash
-petri tx staking edit-validator [flags]
+coven tx staking edit-validator [flags]
 ```
 
 **Flags:**
@@ -269,40 +269,40 @@ petri tx staking edit-validator [flags]
 ### Edit validator information
 
 ```bash
-petri tx staking edit-validator --from=<key-name> --chain-id=petrihub --fees=0.3petri --commission-rate=0.10 --moniker=<validator-name>
+coven tx staking edit-validator --from=<key-name> --chain-id=coven --fees=0.3coven --commission-rate=0.10 --moniker=<validator-name>
 ```
 
 ### Upload validator avatar
 
 Please refer to [How to upload my validator's logo to the Explorers](../concepts/validator-faq.md#how-to-upload-my-validator-s-logo-to-the-explorers)
 
-## petri tx staking delegate
+## coven tx staking delegate
 
 Delegate tokens to a validator.
 
 ```bash
-petri tx staking delegate [validator-addr] [amount] [flags]
+coven tx staking delegate [validator-addr] [amount] [flags]
 ```
 
 ```bash
-petri tx staking delegate <iva...> <amount> --chain-id=petrihub --from=<key-name> --fees=0.3petri
+coven tx staking delegate <iva...> <amount> --chain-id=coven --from=<key-name> --fees=0.3coven
 ```
 
-## petri tx staking unbond
+## coven tx staking unbond
 
 Unbond tokens from a validator.
 
 ```bash
-petri tx staking unbond [validator-addr] [amount] [flags]
+coven tx staking unbond [validator-addr] [amount] [flags]
 ```
 
 ### Unbond some tokens from a validator
 
 ```bash
-petri tx staking unbond <iva...> 10petri --from=<key-name> --chain-id=petrihub --fees=0.3petri
+coven tx staking unbond <iva...> 10coven --from=<key-name> --chain-id=coven --fees=0.3coven
 ```
 
-## petri tx staking redelegate
+## coven tx staking redelegate
 
 Transfer delegation from one validator to another.
 
@@ -311,11 +311,11 @@ There is no `unbonding time` during the redelegation, so you will not miss the r
 :::
 
 ```bash
-petri tx staking redelegate [src-validator-addr] [dst-validator-addr] [amount] [flags]
+coven tx staking redelegate [src-validator-addr] [dst-validator-addr] [amount] [flags]
 ```
 
 ### Redelegate some tokens to another validator
 
 ```bash
-petri tx staking redelegate <iva...> <iva...> 10petri --chain-id=petrihub --from=<key-name> --fees=0.3petri
+coven tx staking redelegate <iva...> <iva...> 10coven --chain-id=coven --from=<key-name> --fees=0.3coven
 ```

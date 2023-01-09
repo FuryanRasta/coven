@@ -56,17 +56,17 @@ import (
 	tibcclienttypes "github.com/bianjieai/tibc-go/modules/tibc/core/02-client/types"
 	tibchost "github.com/bianjieai/tibc-go/modules/tibc/core/24-host"
 
-	migratehtlc "github.com/petrinetwork/petrihub/migrate/htlc"
-	migrateservice "github.com/petrinetwork/petrihub/migrate/service"
-	migratetibc "github.com/petrinetwork/petrihub/migrate/tibc"
-	"github.com/petrinetwork/petrihub/modules/guardian"
-	guardiantypes "github.com/petrinetwork/petrihub/modules/guardian/types"
-	"github.com/petrinetwork/petrihub/modules/mint"
-	minttypes "github.com/petrinetwork/petrihub/modules/mint/types"
+	migratehtlc "github.com/mage-war/coven/migrate/htlc"
+	migrateservice "github.com/mage-war/coven/migrate/service"
+	migratetibc "github.com/mage-war/coven/migrate/tibc"
+	"github.com/mage-war/coven/modules/guardian"
+	guardiantypes "github.com/mage-war/coven/modules/guardian/types"
+	"github.com/mage-war/coven/modules/mint"
+	minttypes "github.com/mage-war/coven/modules/mint/types"
 )
 
 // RegisterUpgradePlan register a handler of upgrade plan
-func (app *PetriApp) RegisterUpgradePlan(cfg module.Configurator) {
+func (app *CovenApp) RegisterUpgradePlan(cfg module.Configurator) {
 	app.RegisterUpgradeHandler(
 		"v1.1", &store.StoreUpgrades{},
 		func(ctx sdk.Context, plan sdkupgrade.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
@@ -96,7 +96,7 @@ func (app *PetriApp) RegisterUpgradePlan(cfg module.Configurator) {
 				}},
 			)
 			tibcclienttypes.SetDefaultGenesisState(tibcclienttypes.GenesisState{
-				NativeChainName: "petrihub-mainnet",
+				NativeChainName: "coven-mainnet",
 			})
 
 			if err := migratetibc.CreateClient(ctx,

@@ -6,21 +6,21 @@ Auth module is responsible for specifying the base transaction and account types
 
 | Name                                | Description                       |
 | ----------------------------------- | --------------------------------- |
-| [account](#petri-query-auth-account) | Query for account by address      |
-| [params](#petri-query-auth-params)   | Query the current auth parameters |
+| [account](#coven-query-auth-account) | Query for account by address      |
+| [params](#coven-query-auth-params)   | Query the current auth parameters |
 
-### petri query auth account
+### coven query auth account
 
 Query for account by address.
 
 ```bash
-petri query auth account [flags]
+coven query auth account [flags]
 ```
 
-### petri query auth params
+### coven query auth params
 
 Query the current auth parameters.
 
 ```bash
-petri query auth params [flags]
+coven query auth params [flags]
 ```

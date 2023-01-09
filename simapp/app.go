@@ -114,14 +114,14 @@ import (
 	tokenkeeper "github.com/irisnet/irismod/modules/token/keeper"
 	tokentypes "github.com/irisnet/irismod/modules/token/types"
 
-	"github.com/petrinetwork/petrihub/address"
-	"github.com/petrinetwork/petrihub/lite"
-	"github.com/petrinetwork/petrihub/modules/guardian"
-	guardiankeeper "github.com/petrinetwork/petrihub/modules/guardian/keeper"
-	guardiantypes "github.com/petrinetwork/petrihub/modules/guardian/types"
-	"github.com/petrinetwork/petrihub/modules/mint"
-	mintkeeper "github.com/petrinetwork/petrihub/modules/mint/keeper"
-	minttypes "github.com/petrinetwork/petrihub/modules/mint/types"
+	"github.com/mage-war/coven/address"
+	"github.com/mage-war/coven/lite"
+	"github.com/mage-war/coven/modules/guardian"
+	guardiankeeper "github.com/mage-war/coven/modules/guardian/keeper"
+	guardiantypes "github.com/mage-war/coven/modules/guardian/types"
+	"github.com/mage-war/coven/modules/mint"
+	mintkeeper "github.com/mage-war/coven/modules/mint/keeper"
+	minttypes "github.com/mage-war/coven/modules/mint/types"
 
 	"github.com/irisnet/irismod/modules/farm"
 	farmkeeper "github.com/irisnet/irismod/modules/farm/keeper"
@@ -305,10 +305,10 @@ func init() {
 	sdk.SetCoinDenomRegex(DefaultCoinDenomRegex)
 
 	nativeToken = tokentypes.Token{
-		Symbol:        "petri",
-		Name:          "Petrihub staking token",
+		Symbol:        "coven",
+		Name:          "Covenhub staking token",
 		Scale:         6,
-		MinUnit:       "upetri",
+		MinUnit:       "ucoven",
 		InitialSupply: 2000000000,
 		MaxSupply:     10000000000,
 		Mintable:      true,
@@ -320,7 +320,7 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".petri")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".coven")
 	owner, err := sdk.AccAddressFromBech32(nativeToken.Owner)
 	if err != nil {
 		panic(err)
@@ -343,7 +343,7 @@ func DefaultCoinDenomRegex() string {
 	return reDnmString
 }
 
-// NewSimApp returns a reference to an initialized PetriApp.
+// NewSimApp returns a reference to an initialized CovenApp.
 func NewSimApp(
 	logger log.Logger,
 	db dbm.DB,
@@ -908,8 +908,8 @@ func NewSimApp(
 }
 
 // MakeCodecs constructs the *std.Codec and *codec.LegacyAmino instances used by
-// petriapp. It is useful for tests and clients who do not want to construct the
-// full petriapp
+// covenapp. It is useful for tests and clients who do not want to construct the
+// full covenapp
 func MakeCodecs() (codec.Codec, *codec.LegacyAmino) {
 	config := MakeTestEncodingConfig()
 	return config.Codec, config.Amino
@@ -983,7 +983,7 @@ func (app *SimApp) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-// AppCodec returns PetriApp's app codec.
+// AppCodec returns CovenApp's app codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
@@ -991,7 +991,7 @@ func (app *SimApp) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns PetriApp's InterfaceRegistry
+// InterfaceRegistry returns CovenApp's InterfaceRegistry
 func (app *SimApp) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }

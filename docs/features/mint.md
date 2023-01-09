@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The incentive mechanism of POW is widely known and explicit: once a new block is produced, the block miner will acquire a certain amount of token as well as the accumulation of transaction fee in the block. As a POS blockchain network, the PETRIhub has similar way to produce reward token but more complex mechanism to distribute the reward to each contributor.
+The incentive mechanism of POW is widely known and explicit: once a new block is produced, the block miner will acquire a certain amount of token as well as the accumulation of transaction fee in the block. As a POS blockchain network, the COVENhub has similar way to produce reward token but more complex mechanism to distribute the reward to each contributor.
 
 In each block producing period, all POW miners compete to calculate their work proof and the fastest one will be the winner. Actually, all loser miners don't offer any positive help or collaboration to the winner miner, and they are just the competitors. So it is reasonable to grant all reward to the winner miner. However, in POS blockchain network, we can't do that. Because each block producing process is the collaboration of all validators and delegators, which means the benefit should be share by all these contributors. As for how to distribute reward token to contributors, we will document and implement it in [distribution](distribution.md) module.
 
@@ -28,8 +28,8 @@ AnnualInflationAmount = inflationBasement * inflationRate
 blockInflationAmount = AnnualInflationAmount * blockCostTime / (year)
 ```
 
-The value of `inflationBasement` is specified in genesis file. By default its value `2000000000petri`(2 billion petri, `1 petri` equals `1*10^18 upetri`), and its value will never be changed.
-Suppose `blockCostTime` is 5000 millisecond, and `inflationRate` is `4%`, then the inflation amount will be `12675235125611580094upetri` (`12.675235125611580094petri`)
+The value of `inflationBasement` is specified in genesis file. By default its value `2000000000coven`(2 billion coven, `1 coven` equals `1*10^18 ucoven`), and its value will never be changed.
+Suppose `blockCostTime` is 5000 millisecond, and `inflationRate` is `4%`, then the inflation amount will be `12675235125611580094ucoven` (`12.675235125611580094coven`)
 
 ## Impact to users
 
@@ -37,12 +37,12 @@ The inflation calculation is automatically triggered by each block. So once a ne
 
 There is a command line interface and one LCD restful APIs which can query total loose tokens amount.
 
-`petri q staking pool`
+`coven q staking pool`
 
 This is much faster, but it cannot get merkle proof and verify proof. So if you doesn't trust the connected full node, please don't use this interface.
 
 ```bash
-petri q staking pool --node=<petri-node-url>
+coven q staking pool --node=<coven-node-url>
 ```
 
 Example Output:

@@ -4,7 +4,7 @@ order: 1
 
 # General Concepts
 
-## PETRIhub Node Types
+## COVENhub Node Types
 
 ### Full Node
 
@@ -12,13 +12,13 @@ A full-node is a program that fully validates transactions and blocks of a block
 
 ### Validator Node
 
-The [PETRI Hub](../get-started/intro.md#petri-hub) is based on [Cosmos SDK](https://cosmos.network/docs/intro/) and [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html), which relies on a set of validators to secure the network. The role of validators is to run a full-node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private keys. Validators commit new blocks to the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
+The [COVEN Hub](../get-started/intro.md#coven-hub) is based on [Cosmos SDK](https://cosmos.network/docs/intro/) and [Tendermint](https://tendermint.com/docs/introduction/what-is-tendermint.html), which relies on a set of validators to secure the network. The role of validators is to run a full-node and participate in consensus by broadcasting votes which contain cryptographic signatures signed by their private keys. Validators commit new blocks to the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
 
 ### Validator Candidate Node
 
 Only top 100 bonded full nodes can become validator nodes, the rest will become candidates. The situation will change as delegation amount changes.
 
-## PETRIhub User Types
+## COVENhub User Types
 
 ### Validator Operator
 
@@ -26,7 +26,7 @@ A validator operator is the only one who can operate the Validator's information
 
 ### Delegator
 
-Delegators are PETRI holders who cannot, or do not want to run a validator themselves. PETRI holders can delegate PETRI to a validator and obtain a part of their revenue in exchange. They can earn as much as the validators and only need to pay some commission.
+Delegators are COVEN holders who cannot, or do not want to run a validator themselves. COVEN holders can delegate COVEN to a validator and obtain a part of their revenue in exchange. They can earn as much as the validators and only need to pay some commission.
 
 ### Profiler
 
@@ -36,15 +36,15 @@ Profiler is a special type of user who can submit software upgrade/halt proposal
 
 Trustee is a special type of user who will receive funds from CommunityTaxUsage proposals
 
-## PETRI Token
+## COVEN Token
 
-The PETRI hub has its own native token known as *PETRI*.  It is designed to serve three purposes in the network.
+The COVEN hub has its own native token known as *COVEN*.  It is designed to serve three purposes in the network.
 
-- **Staking.** Similar to the ATOM token in the Cosmos Hub, the PETRI token will be used as a staking token to secure the PoS blockchain.
-- **Transaction Fee.** The PETRI token will also be used to pay fees for all transactions in the PETRI network.
-- **Service Fee.** It is required that service providers in the PETRI network charge service fees denominated in the PETRI token.
+- **Staking.** Similar to the ATOM token in the Cosmos Hub, the COVEN token will be used as a staking token to secure the PoS blockchain.
+- **Transaction Fee.** The COVEN token will also be used to pay fees for all transactions in the COVEN network.
+- **Service Fee.** It is required that service providers in the COVEN network charge service fees denominated in the COVEN token.
 
-It is intended that the PETRI network will eventually support all whitelisted fee tokens from the Cosmos network, which can be used to pay the transaction fees and service fees.
+It is intended that the COVEN network will eventually support all whitelisted fee tokens from the Cosmos network, which can be used to pay the transaction fees and service fees.
 
 ## Staking Rewards
 
@@ -52,34 +52,34 @@ The validator and its delegators can share the following rewards by proportion:
 
 - **Block Inflation**
 
-  Block Inflation exists to incentivize PETRI holders to stake. The more staked PETRI tokens are, more secure the network become(Read more about [Staking](../features/staking.md)).
+  Block Inflation exists to incentivize COVEN holders to stake. The more staked COVEN tokens are, more secure the network become(Read more about [Staking](../features/staking.md)).
 
-  Block Inflation will be [distributed every block](../features/mint.md). [Inflation rate](../features/mint.md) in PETRIhub for the first year will be 4%.  **This ration could be adjusted by `parameter-change` proposals**.
-  In this way, loose PETRI will devalue year by year.
+  Block Inflation will be [distributed every block](../features/mint.md). [Inflation rate](../features/mint.md) in COVENhub for the first year will be 4%.  **This ration could be adjusted by `parameter-change` proposals**.
+  In this way, loose COVEN will devalue year by year.
 
 - **Block Proposer Reward**
 
-  In PETRIhub, the probability for being a proposer is proportional to the validator's bonded tokens. If one proposed block is finalized, the proposer gets extra rewards for it.
+  In COVENhub, the probability for being a proposer is proportional to the validator's bonded tokens. If one proposed block is finalized, the proposer gets extra rewards for it.
 
 - **Fee**
 
-  Each transaction needs a [fee](fee.md#fee) for compensating validators' work[Gas](fee.md#gas). These fees can be paid with PETRI and may later in any tokens which are whitelisted by the PETRIhub's governance. Fees are distributed to validators in proportion to their stake. A minimum fee/gas ration is set in PETRIhub.
+  Each transaction needs a [fee](fee.md#fee) for compensating validators' work[Gas](fee.md#gas). These fees can be paid with COVEN and may later in any tokens which are whitelisted by the COVENhub's governance. Fees are distributed to validators in proportion to their stake. A minimum fee/gas ration is set in COVENhub.
 
 Each validator receives revenue in proportion to its total stake. However, before this revenue is distributed to its delegators, the validator can apply a commission for providing staking services.
 
 ### Staking Rewards Calculation Formula
 
-The following formulas are based on the current [PETRIhub Mainnet Params](gov-params.md).
+The following formulas are based on the current [COVENhub Mainnet Params](gov-params.md).
 
 #### Annual Rewards (ignore proposer rewards and fees)
 
-- **AnnualInflation =** `Base * InflationRate` (aka 2 billion * 4% = 80 million petri)
+- **AnnualInflation =** `Base * InflationRate` (aka 2 billion * 4% = 80 million coven)
 - **ValidatorRewards =** `(AnnualInflation / BondedTokens) * (1 - CommunityTax) * (ValidatorSelfDelegation +  DelegatorsDelegation * ValidatorCommissionRate)`
 - **DelegatorRewards =** `(AnnualInflation / BondedTokens) * (1 - CommunityTax) * DelegatorSelfDelegation * (1 - ValidatorCommissionRate)`
 
 #### Block Rewards
 
-- **BlockInflation =** `AnnualInflation / (365*24*60*12)` (aka 12.68 petri)
+- **BlockInflation =** `AnnualInflation / (365*24*60*12)` (aka 12.68 coven)
 - **ProposerExtraRewards =** `(BaseProposerReward + BonusProposerReward * PrecommitPower/TotalVotingPower) * (BlockInflation + BlockCollectedFees)`
 - **BlockRewards =** `(BlockInflation + BlockCollectedFees) * (1 - CommunityTax) - ProposerExtraRewards`
 - **ValidatorTotalRewards =**

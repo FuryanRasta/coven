@@ -14,7 +14,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/input"
 	"github.com/cosmos/cosmos-sdk/client/keys"
 
-	"github.com/petrinetwork/petrihub/keystore"
+	"github.com/mage-war/coven/keystore"
 )
 
 // Commands registers a sub-tree of commands to interact with

@@ -4,15 +4,15 @@ order: 1
 
 # Introduction
 
-`petri` is a command line client for the PETRIhub network. PETRIhub users can use `petri` to send transactions and query the blockchain data.
+`coven` is a command line client for the COVENhub network. COVENhub users can use `coven` to send transactions and query the blockchain data.
 
 ## Working Directory
 
-The default working directory for the `petri` is `$HOME/.petri`, which is mainly used to save configuration files and data. The PETRIhub `key` data is saved in the working directory of `petri`. You can also specify the `petri`  working directory by `--home`.
+The default working directory for the `coven` is `$HOME/.coven`, which is mainly used to save configuration files and data. The COVENhub `key` data is saved in the working directory of `coven`. You can also specify the `coven`  working directory by `--home`.
 
 ## Connecting to a Full Node
 
-The `petri` node provides a RPC interface, transactions and query requests are sent to the process listening to it. The default rpc address the `petri` is connected to is `tcp://localhost:26657`, it can also be specified by `--node`.
+The `coven` node provides a RPC interface, transactions and query requests are sent to the process listening to it. The default rpc address the `coven` is connected to is `tcp://localhost:26657`, it can also be specified by `--node`.
 
 ## Global Flags
 
@@ -23,7 +23,7 @@ All GET commands has the following global flags:
 | Name, shorthand | type   | Required | Default Value        | Description                          |
 | --------------- | ------ | -------- | -------------------- | ------------------------------------ |
 | --chain-id      | string |          |                      | Chain ID of tendermint node          |
-| --home          | string |          | /Users/bianjie/.petri | Directory for config and data        |
+| --home          | string |          | /Users/bianjie/.coven | Directory for config and data        |
 | --trace         | string |          |                      | Print out full stack trace on errors |
 
 ### POST Commands
@@ -52,7 +52,7 @@ All POST commands have the following global flags:
 | --trust-node      | bool   |          | true                  | Don't verify proofs for responses                                                                              |
 | --yes             | bool   |          | true                  | Skip tx broadcasting prompt confirmation                                                                       |
 | --chain-id        | string |          |                       | Chain ID of tendermint node                                                                                    |
-| --home            | string |          |                       | Directory for config and data (default "/Users/bianjie/.petri")                                                 |
+| --home            | string |          |                       | Directory for config and data (default "/Users/bianjie/.coven")                                                 |
 | --trace           | string |          |                       | Print out full stack trace on errors                                                                           |
 
 ## Module Commands

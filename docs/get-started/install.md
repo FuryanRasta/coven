@@ -6,7 +6,7 @@ order: 2
 ## Install `go`
 
 ::: tip
-**Go 1.15+** is required for building and installing the PETRIhub software.
+**Go 1.15+** is required for building and installing the COVENhub software.
 :::
 
 Install `go` by following the [official docs](https://golang.org/doc/install).
@@ -29,22 +29,22 @@ Verify that `go` has been installed successfully
 go version
 ```
 
-## Install `petri`
+## Install `coven`
 
-After setting up `go` correctly, you should be able to compile and run `petri`.
+After setting up `go` correctly, you should be able to compile and run `coven`.
 
 Make sure that your server can access to google.com because our project depends on some libraries provided by google. (If you are not able to access google.com, you can also try to add a proxy: `export GOPROXY=https://goproxy.io`)
 
 ```bash
-git clone https://github.com/petrinetwork/petrihub
-cd petrihub
+git clone https://github.com/mage-war/coven
+cd coven
 git checkout <version>
 make install
 ```
 
 If your environment variables have set up correctly, you should not get any errors by running the above commands.
-Now check your `petri` version.
+Now check your `coven` version.
 
 ```bash
-petri version
+coven version
 ```
